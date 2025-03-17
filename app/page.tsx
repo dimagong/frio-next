@@ -11,6 +11,10 @@ export default async function Home(props: {
     const data = await fetch(
         `https://jsonfakery.com/blogs/paginated?page=${currentPage}`
     )
+    if (!data.ok) {
+        //todo error handler
+        throw new Error('Failed to fetch data')
+    }
     const blogs = await data.json()
     console.log('post===', blogs)
 
